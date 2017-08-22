@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC	"-//Apache Software Foundation
+//DTD Struts Configuration 2.3//EN"	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <package name="user" namespace="/" extends="struts-default">
+    	<action name="*Action" class="com.yzpc.action.LoginAction" method="{1}">
+           <result name="success">/{1}_success.jsp</result>
+           <result name="error">/{1}_error.jsp</result>
+           <result name="register">/{1}.jsp</result>
+        </action>
+    </package>
+
+
+
+</struts>
+
+

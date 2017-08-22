@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="GBK"/>
+	<package name="validate" extends="struts-default" namespace="/">	
+		<action name="login" class="com.yzpc.action.UserAction" method="login">
+			<result name="success">success.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>	
+		<action name="reg" class="com.yzpc.action.UserAction"  method="reg">
+			<result name="success">success.jsp</result>
+			<result name="input">reg.jsp</result>
+		</action>		
+	</package>
+</struts>    
+
+

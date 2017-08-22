@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC	"-//Apache Software Foundation
+//DTD Struts Configuration 2.3//EN"	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	
+	
+	<package name="default" extends="struts-default" namespace="/">		
+		<interceptors>
+			<interceptor name="interceptorName" class="interceptorClass"/>
+			<interceptor name="myinterceptor" class="com.yzpc.interceptor.MyInterceptor">
+				<param name="parameterName">parameterValue</param>
+			</interceptor>
+		</interceptors>
+		
+		<interceptors>
+			<interceptor-stack name="interceptorStackName">
+				<interceptor-ref name="interceptorName"/>
+				……
+			</interceptor-stack>
+		</interceptors>
+		
+		<interceptors>
+			<!-- 定义myinterceptorstack 拦截器栈 -->
+			<interceptor-stack name="myinterceptorstack">
+				<!-- 引用Struts 2 系统拦截器token -->
+				<interceptor-ref name="token"/>
+				<!-- 引用自定义拦截器 myinterceptor -->
+				<interceptor-ref name="myinterceptor">
+					<param name="parameterName">parameterValue</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!—- 定义拦截器 -->
+		<interceptors>
+			<!-- 定义拦截器interceptorName1，对应的拦截器类为MyInterceptor1 -->
+			<interceptor name="interceptorName1" 
+			class="com.yzpc.interceptor.MyInterceptor1"/>
+			<!-- 定义拦截器interceptorName2，对应的拦截器类为MyInterceptor2 -->
+			<interceptor name="interceptorName2" 
+			class="com.yzpc.interceptor.MyInterceptor2"/>
+			<!-- 定义myinterceptorstack 拦截器栈 -->
+			<interceptor-stack name="myinterceptorstack">
+				……
+			</interceptor-stack>
+		</interceptors>
+		
+		<!—- 配置LoginAction 类，在Action中使用拦截器 -->
+		<action name="user" class="com.yzpc.action.LoginAction">
+			<result>/login_success.jsp</result>
+			<result name="input">/login.jsp</result>
+			<!-- 使用interceptorName1拦截器 -->
+			<interceptor-ref name="interceptorName1"/>
+			<!-- 使用interceptorName2拦截器 -->
+			<interceptor-ref name="interceptorName2"/>
+			<!-- 使用系统默认拦截器defaultStack -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 在Action 中引用myinterceptorstack拦截器栈 -->
+			<interceptor-ref name="myinterceptorstack"/>
+		</action>
+		
+		<default-interceptor-ref name="拦截器(栈)的名字" />
+		
+	<package name="default" extends="struts-default" namespace="/">
+		<interceptors>
+			<!--定义拦截器myinterceptor，对应的拦截器类为MyInterceptor-->
+			<interceptor name="myinterceptor" 
+			class="com.yzpc.interceptor.MyInterceptor">
+		</interceptors>
+		<!-- 将拦截器myinterceptor配置为默认拦截器 -->
+		<default-interceptor-ref name="myinterceptor"/>
+		<!-- 配置LoginAction 类 -->
+		<action name="user" class="com.yzpc.action.LoginAction">
+			<result name="success">/login_success.jsp</result>
+		</action>
+	 </package>
+		
+		
+		
+	</package>
+	
+	
+	   
+    <package name="user" extends="struts-default" namespace="/">
+    	<action name="loginAction" class="com.yzpc.action.LoginAction" >
+           <result name="toSecond" type="chain">
+           		<param name="actionName">secondAction</param>
+           </result>
+           <result name="error" type="dispatcher">/login_error.jsp</result>
+        </action>
+        <action name="secondAction" class="com.yzpc.action.SecondAction" >
+           <result name="toWelcome">login_success.jsp</result>
+        </action> 
+    </package>    
+</struts>
+
+

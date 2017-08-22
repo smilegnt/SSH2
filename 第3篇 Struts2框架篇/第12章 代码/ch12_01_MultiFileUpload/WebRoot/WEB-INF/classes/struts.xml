@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="FileUploadError"/>
+	<constant name="struts.i18n.encoding" value="gbk"/>
+	
+	<constant name="struts.multipart.maxSize" value="31457280"/>
+	<package name="multiFileUpload'" extends="struts-default" namespace="/">	
+		<action name="multiFile" class="com.yzpc.action.MultiFileAction">
+			<param name="savePath">/MultiFileUpload</param><!-- 配置文件上传目录 -->
+			<result name="success">/multiFileResult.jsp</result>	<!-- 成功结果页面 -->
+			<result name="input">/multiFile.jsp</result>	<!--重新选择页面 -->
+			<interceptor-ref name="fileUpload"><!-- 配置fileUpload拦截器 -->
+				<param name="maximumSize">1048576</param><!-- 配置允许上传文件大小最大值 -->
+				<param name="maximumSize">text/plain,application/msword,image/jpeg</param><!-- 配置允许上传文件类型 -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>    
+
+

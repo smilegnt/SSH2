@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+             "-//Apache Struts//XWork Validator 1.0.3//EN"
+             "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="user.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="username.null"/>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">6</param>
+			<message key="username.length"/>
+		</field-validator>
+	</field>
+	
+	<field name="user.password">
+		<field-validator type="requiredstring">
+			<message key="password.null"/>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">6</param>
+			<message key="password.length"/>
+		</field-validator>
+	</field>
+	
+	<field name="repassword">
+		<field-validator type="requiredstring">
+			<message key="repassword.null"/>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">user.password==repassword</param>
+			<message key="repassword.same"/>
+		</field-validator>
+	</field>
+	
+	<field name="user.telephone">		
+		<field-validator type="requiredstring">
+			<message key="telephone.null"/>
+		</field-validator>		
+		<field-validator type="regex">
+			<param name="expression">^(\d{3,4}-){0,1}(\d{7,8})$</param>
+			<message>电话号码格式不正确</message>
+		</field-validator>
+	</field>
+	<!-- ^(\(\d{3,4}\)|\d{3,4}-)?\d{7,8}(-\d{1,4})?$   ^(\d{3,4}-){0,1}(\d{7,8})$-->
+	
+	<field name="user.realname">
+		<field-validator type="requiredstring">
+			<message key="realname.null"/>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">4</param>
+			<param name="minLength">2</param>
+			<message>用户姓名长度在${minLength}和${maxLength}之间</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.email">
+		<field-validator type="requiredstring">
+			<message key="email.null"/>
+		</field-validator>
+		<field-validator type="email">
+			<message>电子邮箱格式不符合要求</message>
+		</field-validator>
+	</field>
+	
+</validators>

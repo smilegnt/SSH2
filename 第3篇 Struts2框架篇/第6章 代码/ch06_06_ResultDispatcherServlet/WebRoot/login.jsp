@@ -1,0 +1,19 @@
+<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>µÇÂ¼Ò³Ãælogin.jsp</title>
+  </head>
+  
+  <body>
+    <div align=center>  
+      <form name="form1" action="loginAction">
+      	ÓÃ»§Ãû£º<input type="text" name="username"><br>
+      	ÃÜ     Âë£º<input type="password" name="password"><br>
+      	<input type="submit" value="µÇÂ¼">&nbsp;&nbsp;&nbsp; 
+      	<!--a href="register.jsp"><input type="button" value="×¢²á"></a-->
+      	<input type="button" value="×¢²á" onclick="javascrtpt:window.location.href='registerAction'">      	
+      </form>
+    </div>	
+  </body>
+</html>

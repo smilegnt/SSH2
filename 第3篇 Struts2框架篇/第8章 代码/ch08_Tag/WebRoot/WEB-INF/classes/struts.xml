@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="gb18030" />
+	<package name="book" extends="struts-default" namespace="/" >
+		<action name="bookAction" class="com.yzpc.action.BookAction">
+			<result name="success">/ShowComboboxSuccess.jsp</result>
+		</action>
+		
+		<action name="loginAction" class="com.yzpc.action.LoginAction">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="token"/>
+			<result name="invalid.token">/ShowToken.jsp</result>
+			<result name="success">/ShowToken.jsp</result>
+		</action>
+		
+		<action name="errorAction" class="com.yzpc.action.ErrorAction">
+			<result name="success">/ShowErrorAction.jsp</result>
+		</action>
+		
+		<action name="musicAction" class="com.yzpc.action.MusicAction">
+			<result name="success">/ShowActionSuccess.jsp</result>
+		</action>					
+	</package>
+</struts>    

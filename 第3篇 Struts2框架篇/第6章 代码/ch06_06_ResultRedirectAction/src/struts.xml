@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC	"-//Apache Software Foundation
+//DTD Struts Configuration 2.3//EN"	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />   
+    <package name="user" extends="struts-default" namespace="/">
+    	<action name="loginAction" class="com.yzpc.action.LoginAction" >
+           <result name="toSecond" type="redirectAction">
+           		<param name="actionName">secondAction</param>
+           </result>
+           <result name="error">/login_error.jsp</result>
+        </action>
+        <action name="secondAction" class="com.yzpc.action.SecondAction" >
+           <result name="toWelcome">login_success.jsp</result>
+        </action> 
+    </package>    
+</struts>
+
+

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC	"-//Apache Software Foundation
+//DTD Struts Configuration 2.3//EN"	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>	
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 	
+	<package name="simpledemo" extends="struts-default,json-default">		
+		<action name="*JsonAction"  class="com.yzpc.action.JsonAction" method="{1}">
+			<!-- 返回json类型数据 -->
+			<result type="json">
+				<param name="root">result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，
+					该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+		</action>		
+	</package>
+</struts>    

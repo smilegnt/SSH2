@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC	"-//Apache Software Foundation
+//DTD Struts Configuration 2.3//EN"	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="gb18030" />
+	<package name="interceptor" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.yzpc.interceptor.CheckInterceptor"></interceptor>
+		</interceptors>
+
+		<action name="login" class="com.yzpc.action.UserAction">
+			<result name="error">/login.jsp</result>
+			<result name="success">/success.jsp</result>
+		</action>
+		<action name="chakan">
+			<result>/info.jsp</result>
+			<result name="login">/login.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
+		</action>
+	</package>
+</struts>    

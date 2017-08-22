@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC	"-//Apache Software Foundation
+//DTD Struts Configuration 2.3//EN"	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="gb18030" />
+	
+	<package name="book" extends="struts-default" namespace="/" >
+		<action name="showTime" class="com.yzpc.action.ShowTimeAction">
+			<result name="success">/showTime.jsp</result>
+		</action>
+		
+		<action name="login" class="com.yzpc.action.LoginAction">
+			<result name="success">/manage_success.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="ajaxLogin">/manage.jsp</result>
+		</action>
+				
+		<action name="search" class="com.yzpc.action.SearchDateAction" method="searchDate">
+		    <result name="success">/ShowAutocompleter.jsp</result>
+		</action>
+		
+		<action name="ajaxAction" class="com.yzpc.action.AjaxAction">
+		    <result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="textAction" class="com.yzpc.action.LoginAction">
+			<result name="success">/manage_success.jsp</result>
+
+		</action>
+
+
+	</package>
+</struts>    

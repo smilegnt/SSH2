@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+             "-//Apache Struts//XWork Validator 1.0.3//EN"
+             "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="user.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>用户名不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">6</param>
+			<message>用户名长度在${minLength}和${maxLength}之间</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.password">
+		<field-validator type="requiredstring">
+			<message>密码不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">6</param>
+			<message>密码长度必须大于等于${minLength}</message>
+		</field-validator>
+	</field>
+	
+	<field name="repassword">
+		<field-validator type="requiredstring">
+			<message>确认密码不能为空</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">user.password==repassword</param>
+			<message>密码和确认密码必须相同</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.telephone">
+		<field-validator type="requiredstring">
+			<message>电话号码不能为空</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression">^(\d{3,4}-){0,1}(\d{7,8})$</param>
+			<message>电话号码格式不正确</message>
+		</field-validator>
+	</field>
+	
+	<field name="user.realname">
+		<field-validator type="requiredstring">
+			<message>用户姓名不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">4</param>
+			<param name="minLength">2</param>
+			<message>用户姓名长度在${minLength}和${maxLength}之间</message>
+		</field-validator>
+	</field>
+	
+</validators>

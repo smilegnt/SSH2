@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.3//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd">
+<validators>
+	<!-- 使用字段校验器风格 -->
+	<field name="被校验的字段">
+ 		<field-validator type="校验器类型名">
+  			<!-- 此处需要为不同校验器指定数量不等的校验参数 -->
+  			<param name="参数名1">参数值1</param>
+  			<param name="参数名2">参数值2</param>
+  			...
+  			<!-- 校验失败后的提示信息，其中key指定国际化信息的key -->
+  			<message key="I18Nkey">校验失败后的提示信息</message>
+ 		</field-validator>
+ 		<!--如果该字段需要满足多个规则，下面可以配置多个校验器-->
+  	</field>
+  	<!-- 下一个需要校验的字段 -->  	　　
+</validators>
+<validators> 
+    <!-- 使用非字段校验器风格 --> 
+    <validator type="校验器类型名">
+   		<!-- 此处需要为不同字段指定数量不等的校验参数 --> 
+        <param name="fieldName1">被校验的字段1</param>
+        <param name="fieldName2">被校验的字段2</param>
+      	...
+  		<!-- 校验失败后的提示信息，其中key指定国际化信息的key -->
+        <message key="I18Nkey">校验失败后的提示信息</message>
+    </validator>
+    <!-- 下一个需要校验的校验器类型-->  
+</validators> 
+<validators>
+    <validator name="required" class="com.opensymphony.xwork2.validator.validators.RequiredFieldValidator"/>
+    <validator name="requiredstring" class="com.opensymphony.xwork2.validator.validators.RequiredStringValidator"/>
+    <validator name="int" class="com.opensymphony.xwork2.validator.validators.IntRangeFieldValidator"/>
+    <validator name="long" class="com.opensymphony.xwork2.validator.validators.LongRangeFieldValidator"/>
+    <validator name="short" class="com.opensymphony.xwork2.validator.validators.ShortRangeFieldValidator"/>
+    <validator name="double" class="com.opensymphony.xwork2.validator.validators.DoubleRangeFieldValidator"/>
+    <validator name="date" class="com.opensymphony.xwork2.validator.validators.DateRangeFieldValidator"/>
+    <validator name="expression" class="com.opensymphony.xwork2.validator.validators.ExpressionValidator"/>
+    <validator name="fieldexpression" class="com.opensymphony.xwork2.validator.validators.FieldExpressionValidator"/>
+    <validator name="email" class="com.opensymphony.xwork2.validator.validators.EmailValidator"/>
+    <validator name="url" class="com.opensymphony.xwork2.validator.validators.URLValidator"/>
+    <validator name="visitor" class="com.opensymphony.xwork2.validator.validators.VisitorFieldValidator"/>
+    <validator name="conversion" class="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator"/>
+    <validator name="stringlength" class="com.opensymphony.xwork2.validator.validators.StringLengthFieldValidator"/>
+    <validator name="regex" class="com.opensymphony.xwork2.validator.validators.RegexFieldValidator"/>
+    <validator name="conditionalvisitor" class="com.opensymphony.xwork2.validator.validators.ConditionalVisitorFieldValidator"/>
+</validators>

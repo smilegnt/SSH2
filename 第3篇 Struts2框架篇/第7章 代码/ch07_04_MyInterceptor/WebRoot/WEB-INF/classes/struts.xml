@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="user" extends="struts-default" namespace="/" >
+		<interceptors>
+			<interceptor name="registerInterceptor" class="com.yzpc.interceptor.RegisterInterceptor" />
+		</interceptors>
+		<action name="registerAction" class="com.yzpc.action.RegisterAction">
+			<result name="success">/register_success.jsp</result>
+			<result name="input">/register.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="registerInterceptor"/>
+		</action>		
+	</package>
+</struts>    

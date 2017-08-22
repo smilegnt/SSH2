@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="FileUploadError"/>
+	<constant name="struts.i18n.encoding" value="gbk"/>
+	
+	<constant name="struts.multipart.maxSize" value="31457280"/>
+	<package name="upload'" extends="struts-default" namespace="/">	
+		<action name="fileUpload"	class="com.yzpc.action.FileUploadAction">
+			<result name="success">/fileUploadResult.jsp</result>
+			<result name="input">/fileUpload.jsp</result>
+		</action>
+		<action name="fileUpload2" class="com.yzpc.action.FileUploadAction2">
+			<param name="savePath">/MyUpload</param><!-- 配置文件上传目录 -->
+			<result name="success">/fileUploadResult.jsp</result>	<!-- 成功结果页面 -->
+			<result name="input">/fileUpload.jsp</result>	<!--重新选择页面 -->
+			<interceptor-ref name="fileUpload"><!-- 配置fileUpload拦截器 -->
+				<param name="allowedTypes">image/bmp,image/jpeg,image/png</param><!-- 配置允许上传文件类型 -->
+				<param name="maximumSize">61440</param><!-- 配置允许上传文件大小最大值 -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>    
+
+
